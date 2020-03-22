@@ -1,0 +1,34 @@
+server:
+  port: ${port:56040} #启动端口 命令行注入
+  servlet:
+    context-path: /service2
+
+spring:
+  application:
+    name: service2
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #
+        namespace: 7008d857-20e9-4bc6-a443-8ccdbb7f54d6
+        cluster-name: DEFAULT
+      config:
+        server-addr: 127.0.0.1:8848 #
+        file-extension: yaml
+        namespace: 7008d857-20e9-4bc6-a443-8ccdbb7f54d6
+        group: XIAOWEI_MICROSERVICE_GROUP
+
+dubbo:
+  scan:
+    base-packages: com.xiaowei.service2.service
+  protocol:
+    name: dubbo
+    port: ${dubbo_port:20891}
+  registry:
+    address: nacos://127.0.0.1:8848
+    application:
+      qos-enable: false
+    consumer:
+      check: false

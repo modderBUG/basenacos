@@ -1,0 +1,21 @@
+server:
+  port: ${port:56020} #启动端口 命令行注入
+  servlet:
+    context-path: /application1
+
+spring:
+  application:
+    name: application1
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #
+        namespace: 7008d857-20e9-4bc6-a443-8ccdbb7f54d6
+        cluster-name: DEFAULT
+      config:
+        server-addr: 127.0.0.1:8848 #
+        file-extension: yaml
+        namespace: 7008d857-20e9-4bc6-a443-8ccdbb7f54d6
+        group: XIAOWEI_MICROSERVICE_GROUP
